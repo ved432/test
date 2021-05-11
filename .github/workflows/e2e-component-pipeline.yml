@@ -11,7 +11,6 @@ defaults:
     working-directory: /go/src
 
 jobs:
-
   ## Setup Variables
   Variables:
     runs-on: ubuntu-latest
@@ -19,20 +18,20 @@ jobs:
       run:
         working-directory: ./
     outputs:
-        e2eTestImage: "jonsy13/litmus-e2e:ci"
-        goExperimentImage: "litmuschaos/go-runner:ci"
-        newLibImage: "litmuschaos/go-runner:ci"
-        oldLibImage: "litmuschaos/go-runner:latest"
-        operatorImage: "litmuschaos/chaos-operator:ci"
-        runnerImage: "litmuschaos/chaos-runner:ci"
-        chaosNamespace: "litmus"
-        imagePullPolicy: "Always"
-        experimentImagePullPolicy: "Always"
-        updateWebsite: "true"
+      e2eTestImage: "jonsy13/litmus-e2e:ci"
+      goExperimentImage: "litmuschaos/go-runner:ci"
+      newLibImage: "litmuschaos/go-runner:ci"
+      oldLibImage: "litmuschaos/go-runner:latest"
+      operatorImage: "litmuschaos/chaos-operator:ci"
+      runnerImage: "litmuschaos/chaos-runner:ci"
+      chaosNamespace: "litmus"
+      imagePullPolicy: "Always"
+      experimentImagePullPolicy: "Always"
+      updateWebsite: "true"
     steps:
       - run: |
           echo "Setting the variables for other Jobs"
-          
+
   ### Setup Litmus
 
   # Setup_Litmus_Infra:
@@ -167,6 +166,7 @@ jobs:
       CI_PIPELINE_ID: ${{ github.run_id }}
       COMPONENT_TEST: "true"
       UPDATE_WEBSITE: "true"
+      GITHUB_TOKEN: ${{ secrets.ADMIN_TOKEN }}
     container:
       image: "${{ needs.Variables.outputs.e2eTestImage }}"
     runs-on: ubuntu-latest
