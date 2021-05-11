@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Image
         env:
-          DOCKER_REPO: litmuschaos
+          DOCKER_REPO: jonsy13
           DOCKER_IMAGE: litmus-e2e
           DOCKER_TAG: ${TAG}
           SAVE_PATH: ${{ github.workspace }}        
@@ -67,7 +67,7 @@ jobs:
 
       - name: Push Image
         env:
-          DOCKER_REPO: litmuschaos
+          DOCKER_REPO: jonsy13
           DOCKER_IMAGE: litmus-e2e
           DOCKER_TAG: ${TAG}
           DNAME: ${{ secrets.DNAME }}

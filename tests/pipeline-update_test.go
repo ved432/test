@@ -26,6 +26,7 @@ var _ = Describe("BDD of pipeline status update", func() {
 
 		testsDetails := types.TestDetails{}
 		environment.GetENV(&testsDetails, "pipeline-update", "")
+		if testsDetails.UpdateWebsite == "true" {
 			It("Should check for the result updation", func() {
 
 				testsDetails := types.TestDetails{}
@@ -59,5 +60,8 @@ var _ = Describe("BDD of pipeline status update", func() {
 				// Expect(err).To(BeNil(), "Fail to setup metrics for pipeline, due to {%v}", err)
 
 			})
+		} else{
+			klog.Info("[SKIP]: Skip updating the result on website")
+		}
 	})
 })
