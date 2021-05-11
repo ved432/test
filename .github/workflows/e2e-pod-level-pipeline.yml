@@ -19,7 +19,7 @@ jobs:
       run:
         working-directory: ./ ## We are not using container here
     outputs:
-      e2eTestImage: "litmuschaos/litmus-e2e:ci"
+      e2eTestImage: "jonsy13/litmus-e2e:ci"
       goExperimentImage: "litmuschaos/go-runner:ci"
       newLibImage: "litmuschaos/go-runner:ci"
       oldLibImage: "litmuschaos/go-runner:latest"
